@@ -13,11 +13,12 @@ if(!$conn_ditp) {
 
 
 $mysqli = new mysqli("10.8.99.131","oneuat","Ibusiness19#","oneuat");
-
 // Check connection
-if ($mysqli -> connect_errno) {
-  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+if ($mysqli->connect_errno) {
+  echo "Failed to connect to MySQL: " . $mysqli->connect_error;
   exit();
+}else{
+  echo "connected Mysqli";
 }
 
 ?>
