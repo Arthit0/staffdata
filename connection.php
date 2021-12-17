@@ -2,7 +2,7 @@
 $serverName = "10.8.98.11";
 $connectionInfo = array( "Database"=>"MOC_DriveDashboardDB", "UID"=>"DITPStuff", "PWD"=>"DITPP@ssw0rd!@#$" , "CharacterSet" => "UTF-8");
 $conn_ditp = sqlsrv_connect( $serverName, $connectionInfo);
-if(!$conn) {
+if(!$conn_ditp) {
     die( print_r( sqlsrv_errors(), true));
 }else{
 
