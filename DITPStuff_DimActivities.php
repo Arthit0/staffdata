@@ -1,9 +1,5 @@
 <?php 
 include('connection.php');
-$start = null;
-$end = null;
-$test1 = null;
-$test2 = null;
 ini_set('max_execution_time', 0);
 $TRUNCATE = "TRUNCATE ditpstuff_dimactivities";
     if ($mysqli->query($TRUNCATE) === FALSE ) {
