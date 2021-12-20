@@ -1,6 +1,6 @@
 <?php
 include("connection.php");
-ini_set("max_execution_time");
+ini_set("max_execution_time",0);
 $TRUNCATE = "TRUNCATE DITPStuff_ActivityStrategicMOC";
     if ($mysqli->query($TRUNCATE) === FALSE ) {
     echo "Failed to connect to MySQL: " . $mysqli->error;
