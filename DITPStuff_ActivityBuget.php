@@ -14,6 +14,7 @@ if (sqlsrv_num_rows($query_cr2) >0){
         print_r($DITP_ONE);
         if ($mysqli->query($DITP_ONE) === FALSE ) {
             echo "Failed to connect to MySQL: " . $mysqli->error;
+        // print_r($data_loop);
             die();
         } 
     }
