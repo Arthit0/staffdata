@@ -1,7 +1,7 @@
 <?php
 include("connection.php");
 ini_set("max_execution_time",0);
-$TRUNCATE = "TRUNCATE ditpstuff_activitybudget";
+$TRUNCATE = "TRUNCATE ditpstuff_activitystrategicditp";
     if ($mysqli->query($TRUNCATE) === FALSE ) {
     echo "Failed to connect to MySQL: " . $mysqli->error;
     }
