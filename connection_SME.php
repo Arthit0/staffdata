@@ -6,7 +6,7 @@ if(!$conn_ditp) {
     die( print_r( sqlsrv_errors(), true));
 }else{
 
-    echo "connected";
+    echo "connected SME DataBase";
 }
 
 

@@ -1,10 +1,10 @@
 <?php 
 include("connection.php");
 ini_set("max_execution_time",0);
-// $TRUNCATE = "TRUNCATE ditpstuff_dimtimeactivity";
-//     if ($mysqli->query($TRUNCATE) === FALSE ) {
-//     echo "Failed to connect to MySQL: " . $mysqli->error;
-//     }
+$TRUNCATE = "TRUNCATE ditpstuff_activityparticipate";
+    if ($mysqli->query($TRUNCATE) === FALSE ) {
+    echo "Failed to connect to MySQL: " . $mysqli->error;
+    }
 
 $SqlServer = "SELECT * FROM  DITPSTuff_ActivityParticipate";
 $query_cr2 = sqlsrv_query($conn_ditp, $SqlServer, array(), array("Scrollable" => 'static'));  
