@@ -1,10 +1,11 @@
 <?php
 include("connection.php");
+include("helper.php");
 ini_set("max_execution_time",0);
-// $TRUNCATE = "TRUNCATE DITPStuff_ActivityStrategicMOC";
-    // if ($mysqli->query($TRUNCATE) === FALSE ) {
-    // echo "Failed to connect to MySQL: " . $mysqli->error;
-    // }
+// $TRUNCATE = "TRUNCATE ditpstuff_activity_preamount_detail_elearning";
+//     if ($mysqli->query($TRUNCATE) === FALSE ) {
+//     echo "Failed to connect to MySQL: " . $mysqli->error;
+//     }
 $SqlServer = "select * from Activity_PreAmount_Detail_ELearning";
 $query_cr2 = sqlsrv_query($conn_ditp, $SqlServer, array(), array("Scrollable" => 'static'));  
 if (sqlsrv_num_rows($query_cr2) >0){
