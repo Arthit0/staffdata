@@ -16,7 +16,7 @@ if (sqlsrv_num_rows($query_cr2) >0){
         $DITP_ONE = "INSERT INTO `sme_reportformapprove_bi`(`Activity_Form_Id`, `Company`, `Corporate_number`, `Address`, `SubDistrict`, `District`, `Province`, `BangkokandCenter`, 
         `Sector`, `Member_type`, `ReferanceSME`, `QOLQE_Activity`, `Activity_name`, `Start_Date`, `Organizations`, `Organized_time`, `Year`, `Country`, `City`, `Continent`, `Activity_type`, 
         `Budget`, `Limit_type`, `Send_the_council`, `QOLQE_Department`, `Activity_name_Department`, `Date_Department`, `Start_Date_Department`, `End_Date_Department`, `Organization_Department`, 
-        `Organized_time_by Department`, `Year_Department`, `Country_Department`, `City_Department`, `Continent_Department`, `Activity_type_Department`, `Limit_type_Department`, `Meeting_Round`, 
+        `Organized_time_by_Department`, `Year_Department`, `Country_Department`, `City_Department`, `Continent_Department`, `Activity_type_Department`, `Limit_type_Department`, `Meeting_Round`, 
         `Amount_Approved_Department`, `Treasury_Approval_Amount`, `Status_Pid`, `Disbursement_Status`, `CancelStatus`, `Cancel_Remark`, `Export_Balance`, `Disciption_Export_Balance`, `Product_Group`, 
         `Product_type`, `Product`, `Send_Pid_Date`, `Council_Approve_Pid_Date`, `Department_Approve_Pid_Date`, `Board_Approve_Dtae_Pid`, `Submit_Disbursement_Documents_Date`, `Council_Approve_Documents_Date`,
          `Department_Approve_Date`, `Treasury_Date`, `Treasury_Approve_Date`, `Check_Date`, `Already_Used_Rights_ProductShow`, `Already_Used_Rights_BOP`, `Already_Used_Rights_Virtual`, `Cancel_Rights`, `Cut_Right_Next_Round`) 
