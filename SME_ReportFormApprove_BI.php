@@ -2,17 +2,17 @@
 include("connection_SME.php");
 include("helper.php");
 ini_set("max_execution_time",0);
-$TRUNCATE = "TRUNCATE sme_reportformapprove_bi";
-    if ($mysqli->query($TRUNCATE) === FALSE ) {
-    echo "Failed to connect to MySQL: " . $mysqli->error;
-    }
+// $TRUNCATE = "TRUNCATE sme_reportformapprove_bi";
+//     if ($mysqli->query($TRUNCATE) === FALSE ) {
+//     echo "Failed to connect to MySQL: " . $mysqli->error;
+//     }
 
 $SqlServer = "select * from ReportFormApprove_BI";
 $query_cr2 = sqlsrv_query($conn_ditp, $SqlServer, array(), array("Scrollable" => 'static'));  
 if (sqlsrv_num_rows($query_cr2) >0){
     while ($data_loop = sqlsrv_fetch_array($query_cr2, SQLSRV_FETCH_ASSOC)){
-        // print_r($data_loop);
-        // die();
+        print_r($data_loop);
+        die();
         $DITP_ONE = "INSERT INTO `sme_reportformapprove_bi`(`Activity_Form_Id`, `Company`, `Corporate_number`, `Address`, `SubDistrict`, `District`, `Province`, `BangkokandCenter`, 
         `Sector`, `Member_type`, `ReferanceSME`, `QOLQE_Activity`, `Activity_name`, `Start_Date`, `Organizations`, `Organized_time`, `Year`, `Country`, `City`, `Continent`, `Activity_type`, 
         `Budget`, `Limit_type`, `Send_the_council`, `QOLQE_Department`, `Activity_name_Department`, `Date_Department`, `Start_Date_Department`, `End_Date_Department`, `Organization_Department`, 
