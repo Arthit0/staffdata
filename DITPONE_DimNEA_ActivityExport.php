@@ -10,18 +10,20 @@ $SqlServer = "select * from DITPONE_DimNEA_ActivityExport";
 $query_cr2 = sqlsrv_query($conn_ditp, $SqlServer, array(), array("Scrollable" => 'static'));  
 if (sqlsrv_num_rows($query_cr2) >0){
     while ($data_loop = sqlsrv_fetch_array($query_cr2, SQLSRV_FETCH_ASSOC)){
-        $DITP_ONE = "INSERT INTO `ditp_nea_export_user`(`Act_Exp_No`, `Activity_Id`, `Com_Code`, `Com_Size`, `Com_Size_By_SME`, `Com_Size_Capital`, `Corporate_Id`, `Country_Name_Eng`, `Country_Name_TH`, `Endescriptions`, 
-        `Export_Count`, `Export_No`, `F_Year`, `HS_Code11`, `HS_Code2`, `HS_Code4`, `HS_Code6`, `HS_Code8`, `ISO_Code`, `Monthno`, `NEA_Activity_To_DITP`, `Person_Id`, `Person_No`, `Rank_Activity`, `Rank_DITP_Activity`, 
-        `Rank_Main_Course`, `Show_Code`, `Tax_No`, `TH_Descriptions_L1_Show_Code`, `TH_Descriptions_L2_Show_Code`, `TH_Descriptions_L3_Show_Code`, `TH_Descriptions_L4_Show_Code`, `TH_Descriptions_L5_Show_Code`, `Thdescriptions`,
-         `Un_Code`, `Year_No`, `Zone_EN`, `Zone_TH`) VALUES
-        ('".mysql_escape($data_loop['Act_Exp_No'])."','".mysql_escape($data_loop['Activity_Id'])."','".mysql_escape($data_loop['Com_Code'])."','".mysql_escape($data_loop['Com_Size'])."','".mysql_escape($data_loop['Com_Size_By_SME'])."',
-        '".mysql_escape($data_loop['Com_Size_Capital'])."','".mysql_escape($data_loop['Corporate_Id'])."','".mysql_escape($data_loop['Country_Name_Eng'])."','".mysql_escape($data_loop['Country_Name_TH'])."','".mysql_escape($data_loop['Endescriptions'])."',
-        '".mysql_escape($data_loop['Export_Count'])."','".mysql_escape($data_loop['Export_No'])."','".mysql_escape($data_loop['F_Year'])."','".mysql_escape($data_loop['HS_Code11'])."','".mysql_escape($data_loop['HS_Code2'])."',
-        '".mysql_escape($data_loop['HS_Code4'])."','".mysql_escape($data_loop['HS_Code6'])."','".mysql_escape($data_loop['HS_Code8'])."','".mysql_escape($data_loop['ISO_Code'])."','".mysql_escape($data_loop['Monthno'])."',
-        '".mysql_escape($data_loop['NEA_Activity_To_DITP'])."','".mysql_escape($data_loop['Person_Id'])."','".mysql_escape($data_loop['Person_No'])."','".mysql_escape($data_loop['Rank_Activity'])."','".mysql_escape($data_loop['Rank_DITP_Activity'])."',
-        '".mysql_escape($data_loop['Rank_Main_Course'])."','".mysql_escape($data_loop['Show_Code'])."','".mysql_escape($data_loop['Tax_No'])."','".mysql_escape($data_loop['TH_Descriptions_L1_Show_Code'])."','".mysql_escape($data_loop['TH_Descriptions_L2_Show_Code'])."',
-        '".mysql_escape($data_loop['TH_Descriptions_L3_Show_Code'])."','".mysql_escape($data_loop['TH_Descriptions_L4_Show_Code'])."','".mysql_escape($data_loop['TH_Descriptions_L5_Show_Code'])."','".mysql_escape($data_loop['Thdescriptions'])."','".mysql_escape($data_loop['Un_Code'])."',
-        '".mysql_escape($data_loop['Year_No'])."','".mysql_escape($data_loop['Zone_EN'])."','".mysql_escape($data_loop['Zone_TH'])."')";
+        $DITP_ONE = "INSERT INTO `ditp_nea_export_activity`( `ActExpNo`, `ExportNo`, `YearNo`, `Monthno`, `FYear`, `UnCode`, `Quantity`, `ValueBaht`, `ValueUSD`, `ISO_Code`, `CountryNameTH`, `CountryNameEng`, `ZoneTH`, `ZoneEN`,
+        `HSCode2`, `HSCode4`, `HSCode6`, `HSCode8`, `HSCode11`, `thdescriptions`, `endescriptions`, `ComCode`, `ShowCode`, `THDescriptions_L1ShowCode`, `THDescriptions_L2ShowCode`, `THDescriptions_L3ShowCode`, 
+        `THDescriptions_L4ShowCode`, `THDescriptions_L5ShowCode`, `Tax_No`, `CorporateId`, `Person_No`, `PersonId`, `Activity_Id`, `ComSize_Capital`, `ComSizeBySME`, `ComSize`, `TimeNO`, `ProvinceCode`, `calValueBaht`,
+         `calValueUSD`, `calQuantity`, `RankActivity`, `RankMainCourse`, `RankDITPActivity`, `ExportCount`, `NEAActivityToDITP`) VALUES 
+       ('".mysql_escape($data_loop['ActExpNo'])."','".mysql_escape($data_loop['ExportNo'])."','".mysql_escape($data_loop['YearNo'])."','".mysql_escape($data_loop['Monthno'])."','".mysql_escape($data_loop['FYear'])."',
+       '".mysql_escape($data_loop['UnCode'])."','".mysql_escape($data_loop['Quantity'])."','".mysql_escape($data_loop['ValueBaht'])."','".mysql_escape($data_loop['ValueUSD'])."','".mysql_escape($data_loop['ISO_Code'])."',
+       '".mysql_escape($data_loop['CountryNameTH'])."','".mysql_escape($data_loop['CountryNameEng'])."','".mysql_escape($data_loop['ZoneTH'])."','".mysql_escape($data_loop['ZoneEN'])."','".mysql_escape($data_loop['HSCode2'])."',
+       '".mysql_escape($data_loop['HSCode4'])."','".mysql_escape($data_loop['HSCode6'])."','".mysql_escape($data_loop['HSCode8'])."','".mysql_escape($data_loop['HSCode11'])."','".mysql_escape($data_loop['thdescriptions'])."',
+       '".mysql_escape($data_loop['endescriptions'])."','".mysql_escape($data_loop['ComCode'])."','".mysql_escape($data_loop['ShowCode'])."','".mysql_escape($data_loop['THDescriptions_L1ShowCode'])."','".mysql_escape($data_loop['THDescriptions_L2ShowCode'])."',
+       '".mysql_escape($data_loop['THDescriptions_L3ShowCode'])."','".mysql_escape($data_loop['THDescriptions_L4ShowCode'])."','".mysql_escape($data_loop['THDescriptions_L5ShowCode'])."','".mysql_escape($data_loop['Tax_No'])."','".mysql_escape($data_loop['CorporateId'])."',
+       '".mysql_escape($data_loop['Person_No'])."','".mysql_escape($data_loop['PersonId'])."','".mysql_escape($data_loop['Activity_Id'])."','".mysql_escape($data_loop['ComSize_Capital'])."','".mysql_escape($data_loop['ComSizeBySME'])."',
+       '".mysql_escape($data_loop['ComSize'])."','".mysql_escape($data_loop['TimeNO'])."','".mysql_escape($data_loop['ProvinceCode'])."','".mysql_escape($data_loop['calValueBaht'])."','".mysql_escape($data_loop['calValueUSD'])."',
+       '".mysql_escape($data_loop['calQuantity'])."','".mysql_escape($data_loop['RankActivity'])."','".mysql_escape($data_loop['RankMainCourse'])."','".mysql_escape($data_loop['RankDITPActivity'])."','".mysql_escape($data_loop['ExportCount'])."',
+       '".mysql_escape($data_loop['NEAActivityToDITP'])."')";
         print_r($DITP_ONE);
         if ($mysqli->query($DITP_ONE) === FALSE ) {
             echo "Failed to connect to MySQL: " . $mysqli->error;
