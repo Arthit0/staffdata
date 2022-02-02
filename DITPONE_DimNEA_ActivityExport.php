@@ -2,7 +2,7 @@
 include("connection_NEA.php");
 include("helper.php");
 ini_set("max_execution_time",0);
-$TRUNCATE = "TRUNCATE ditp_nea_export_user";
+$TRUNCATE = "TRUNCATE ditp_nea_export_activity";
     if ($mysqli->query($TRUNCATE) === FALSE ) {
     echo "Failed to connect to MySQL: " . $mysqli->error;
     }
