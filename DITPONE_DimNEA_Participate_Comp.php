@@ -2,10 +2,10 @@
 include("connection_NEA.php");
 include("helper.php");
 ini_set("max_execution_time",0);
-// $TRUNCATE = "TRUNCATE ditpone_dimneaparticipate_comp";
-//     if ($mysqli->query($TRUNCATE) === FALSE ) {
-//     echo "Failed to connect to MySQL: " . $mysqli->error;
-//     }  
+$TRUNCATE = "TRUNCATE ditpone_dimneaparticipate_comp";
+    if ($mysqli->query($TRUNCATE) === FALSE ) {
+    echo "Failed to connect to MySQL: " . $mysqli->error;
+    }  
 $SqlServer = "select * from DITPONE_DimNEAParticipate_Comp";
 $query_cr2 = sqlsrv_query($conn_ditp, $SqlServer, array(), array("Scrollable" => 'static'));  
 if (sqlsrv_num_rows($query_cr2) >0){
