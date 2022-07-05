@@ -7,7 +7,7 @@ $TRUNCATE = "TRUNCATE ditpone_dimnea_overviewdashboardreport";
     echo "Failed to connect to MySQL: " . $mysqli->error;
     } 
 $SqlServer = "select * from DITPONE_DimNEA_OverviewDashboardReport";
-$query_cr2 = sqlsrv_query($conn_ditp, $SqlServer, array(), array("Scrollable" => 'static'));  
+$query_cr2 = sqlsrv_query($conn_ditp, $SqlServer, array(), array("Scrollable" => 'static')); 
 if (sqlsrv_num_rows($query_cr2) >0){
     while ($data_loop = sqlsrv_fetch_array($query_cr2, SQLSRV_FETCH_ASSOC)){
         $DITP_ONE = "INSERT INTO `ditpone_dimnea_overviewdashboardreport`(`StartDateFYear`, `ParticipateCount`, `NEAActivityCount`, `PersonAndCorporate`, `NEACorporateCount`, `NEAPersonCount`) 
