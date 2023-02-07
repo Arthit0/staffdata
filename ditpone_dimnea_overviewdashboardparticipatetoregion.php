@@ -2,9 +2,14 @@
 include("connection_NEA.php");
 include("helper.php");
 ini_set("max_execution_time",0);
-$TRUNCATE = "TRUNCATE ditpone_dimnea_overviewdashboardparticipatetoregion";
+
+$TRUNCATE = "TRUNCATE oneuat.ditpone_dimnea_overviewdashboardparticipatetoregion";
+$TRUNCATES = "TRUNCATE oneuat_dev.ditpone_dimnea_overviewdashboardparticipatetoregion";
     if ($mysqli->query($TRUNCATE) === FALSE ) {
-    echo "Failed to connect to MySQL: " . $mysqli->error;
+            echo "Failed to connect to MySQL: " . $mysqli->error;
+    } 
+    if ($mysqlis->query($TRUNCATES) === FALSE ) {
+        echo "Failed to connect to MySQL: " . $mysqlis->error;
     } 
 $SqlServer = "select * from ditpone_dimnea_overviewdashboardparticipatetoregion";
 $query_cr2 = sqlsrv_query($conn_ditp, $SqlServer, array(), array("Scrollable" => 'static'));  
@@ -17,6 +22,10 @@ if (sqlsrv_num_rows($query_cr2) >0){
            echo "Failed to connect to MySQL: " . $mysqli->error;
            die();
        } 
+       if ($mysqlis->query($DITP_ONE) === FALSE ) {
+            echo "Failed to connect to MySQL: " . $mysqlis->error;
+            die();
+       }
     }
 }
 echo "<br>";

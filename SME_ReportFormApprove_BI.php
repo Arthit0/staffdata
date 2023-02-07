@@ -2,169 +2,19 @@
 include("connection_SME.php");
 include("helper.php");
 ini_set("max_execution_time",0);
-$TRUNCATE = "TRUNCATE sme_reportformapprove_bi";
+$TRUNCATE = "TRUNCATE oneuat.sme_reportformapprove_bi";
+$TRUNCATES = "TRUNCATE oneuat_dev.sme_reportformapprove_bi";
     if ($mysqli->query($TRUNCATE) === FALSE ) {
-    echo "Failed to connect to MySQL: " . $mysqli->error;
+            echo "Failed to connect to MySQL: " . $mysqli->error;
+    } 
+    if ($mysqlis->query($TRUNCATES) === FALSE ) {
+        echo "Failed to connect to MySQL: " . $mysqlis->error;
     }
-
 $SqlServer = "select * from ReportFormApprove_BI";
 $query_cr2 = sqlsrv_query($conn_ditp, $SqlServer, array(), array("Scrollable" => 'static'));  
 if (sqlsrv_num_rows($query_cr2) >0){
     while ($data_loop = sqlsrv_fetch_array($query_cr2, SQLSRV_FETCH_ASSOC)){
-        // print_r($data_loop);
-        // die();
-        // print_r([
-        //     $data_loop['Activity_Form_Id'],
-        //     $data_loop['บริษัท'],
-        //     $data_loop['เลขนิติบุคคล'],
-        //     $data_loop['ที่อยู่'],
-        //     $data_loop['ตำบล'],
-        //     $data_loop['อำเภอ'],
-        //     $data_loop['จังหวัด'],
-        //     $data_loop['BangkokandCenter'],
-        //     $data_loop['ภาค'],
-        //     $data_loop['ประเภทสมาชิกกรม'],
-        //     $data_loop['ReferanceSME'],
-        //     $data_loop['QOLQEตามใบสมัคร'],
-        //     $data_loop['ชื่อกิจกรรมตามใบสมัคร'],
-        //     $data_loop['วันที่จัดงานตามใบสมัคร'],
-        //     $data_loop['หน่วยงานที่จัดตามใบสมัคร'],
-        //     $data_loop['ครั้งที่จัดตามใบสมัคร'],
-        //     $data_loop['ปีที่จัดงานตามใบสมัคร'],
-        //     $data_loop['ประเทศที่จัดตามใบสมัคร'],
-        //     $data_loop['เมืองที่จัดตามใบสมัคร'],
-        //     $data_loop['ทวีปตามใบสมัคร'],
-        //     $data_loop['ประเภทกิจกรรมใบสมัคร'],
-        //     $data_loop['จำนวนเงินขอสนับสนุน'],
-        //     $data_loop['ประเภทวงเงินตามใบสมัคร'],
-        //     $data_loop['ส่งสภา'],
-        //     $data_loop['QOLQEกรม'],
-        //     $data_loop['ชื่อกิจกรรมตามกรม'],
-        //     $data_loop['วันที่จัดงานตามกรม'],
-        //     $data_loop['วันเริ่มจัดงานตามกรม'],
-        //     $data_loop['วันสิ้นสุดจัดงานตามกรม'],
-        //     $data_loop['หน่วยงานที่จัดตามกรม'],
-        //     $data_loop['ครั้งที่จัดตามกรม'],
-        //     $data_loop['ปีที่จัดงานตามกรม'],
-        //     $data_loop['ประเทศที่จัดตามกรม'],
-        //     $data_loop['เมืองที่จัดตามกรม'],
-        //     $data_loop['ทวีปจัดตามกรม'],
-        //     $data_loop['ประเภทกิจกรรมตามกรม'],
-        //     $data_loop['ประเภทวงเงินตามกรม'],
-        //     $data_loop['รอบการประชุม'],
-        //     $data_loop['ยอดเงินอนุมัติจากคณะกรรม'],
-        //     $data_loop['ยอดเงินอนุมัติจากคลัง'],
-        //     $data_loop['สถานะใบสมัคร'],
-        //     $data_loop['สถานะเบิกจ่าย'],
-        //     $data_loop['CancelStatus'],
-        //     $data_loop['Cancel_Remark'],
-        //     $data_loop['ยอดส่งออหลังร่วมกิจกรรม'],
-        //     $data_loop['หมายเหตุกรณีไม่มียอดส่งออก'],
-        //     $data_loop['กลุ่มสินค้า'],
-        //     $data_loop['ประเภทสินค้าหลัก'],
-        //     $data_loop['สินค้า'],
-        //     $data_loop['วันที่ส่งใบสมัคร'],
-        //     $data_loop['วันที่สภาอนุมัติใบสมัคร'],
-        //     $data_loop['วันที่กรมอนุมัติใบสมัคร'],
-        //     $data_loop['วันที่คณะกรรมการอนุมัติใบสมัคร'],
-        //     $data_loop['วันที่ส่งเอกสารเบิกจ่าย'],
-        //     $data_loop['วันที่สภาอนุมัติเอกสารเบิกจ่าย'],
-        //     $data_loop['วันที่คลังรับเอกสาร'],
-        //     $data_loop['วันที่คลังอนุมัติ'],
-        //     $data_loop['วันที่รับเช็ค'],
-        //     $data_loop['สิทธิที่ใช้ไปแล้วแสดสินค้า'],
-        //     $data_loop['สิทธิที่ใช้ไปแล้วงานBOP'],
-        //     $data_loop['สิทธิที่ใช้ไปแล้วงานVirtual'],
-        //     $data_loop['นับสิทธิยกเลิก'],
-        //     $data_loop['จำนวนสิทธิที่ตัดในรอบถัดไป'],
-        //     $data_loop['วันที่'],
-        //     $data_loop['เดือน'],
-        //     $data_loop['ปี'],
-        //     $data_loop['มูลค่าสั่งซื้อทันที่USD'],
-        //     $data_loop['มูลค่าสั่งซื้อคาดการณ์ใน1ปีUSD'],
-        //     $data_loop['มูลค่าสั่งซื้อรวม'],
-        //     $data_loop['ขนาดธุรกิจ'],
-        //     $data_loop['TSIC'],
-        //     $data_loop['TSICCode'],
-        //     $data_loop['BusinessSector'],
-        // ]);
-        // die();
-        // Array
-// (
-//     [Activity_Form_Id] => 1
-//     [บริษัท] => บริษัท มิสเตอร์ แซนต้า จำกัด(Mr.Santa Co.,Ltd)
-//     [เลขนิติบุคคล] => 0105538078166
-//     [ที่อยู่] => 44 หมู่ 5 ถนนจตุโชติ
-//     [ตำบล] => ออเงิน
-//     [อำเภอ] => สายไหม
-//     [จังหวัด] => กรุงเทพมหานคร
-//     [BangkokandCenter] => กรุงเทพมหานครและปริมณฑล
-//     [ภาค] => ภาคกลาง
-//     [ประเภทสมาชิกกรม] => EL
-//     [ReferanceSME] => 20180911164701
-//     [QOLQEตามใบสมัคร] =>  QEL ลำดับที่ 32(ยุโรปตะวันตก)QOL ลำดับที่ 3
-//     [ชื่อกิจกรรมตามใบสมัคร] => Christmasworld , Frankfurt()
-//     [วันที่จัดงานตามใบสมัคร] => 25/01/2019-29/01/2019
-//     [หน่วยงานที่จัดตามใบสมัคร] => Messe Frankfurt GmbH
-//     [ครั้งที่จัดตามใบสมัคร] => 30
-//     [ปีที่จัดงานตามใบสมัคร] => 2019
-//     [ประเทศที่จัดตามใบสมัคร] => เยอรมนี
-//     [เมืองที่จัดตามใบสมัคร] => Frankfurt (Brandenburg)
-//     [ทวีปตามใบสมัคร] => ยุโรปตะวันตก
-//     [ประเภทกิจกรรมใบสมัคร] => Overseas Trade Fair
-//     [จำนวนเงินขอสนับสนุน] => 200000.0000
-//     [ประเภทวงเงินตามใบสมัคร] => ตลาดใหม่ (อาเซียน จีน เอเชียใต้ ตะวันออกกลาง รัสเซีย CIS ยุโรปตะวันออก แอฟริกา และลาตินอเมริกา)  
-//     [ส่งสภา] => TNSC
-//     [QOLQEกรม] =>  QEL ลำดับที่ 32(ยุโรปตะวันตก)QOL ลำดับที่ 3
-//     [ชื่อกิจกรรมตามกรม] => Christmasworld , Frankfurt
-//     [วันที่จัดงานตามกรม] => 25/01/2019-29/01/2019
-//     [วันเริ่มจัดงานตามกรม] => 25/01/2019
-//     [วันสิ้นสุดจัดงานตามกรม] => 29/01/2019
-//     [หน่วยงานที่จัดตามกรม] => Messe Frankfurt GmbH
-//     [ครั้งที่จัดตามกรม] => 30
-//     [ปีที่จัดงานตามกรม] => 2019
-//     [ประเทศที่จัดตามกรม] => เยอรมนี
-//     [เมืองที่จัดตามกรม] => Frankfurt (Brandenburg)
-//     [ทวีปจัดตามกรม] => ยุโรปตะวันตก
-//     [ประเภทกิจกรรมตามกรม] => Overseas Trade Fair
-//     [ประเภทวงเงินตามกรม] => ตลาดหลัก (ญี่ปุ่น สหรัฐอเมริกา EU-IS ออสเตรเลีย นิวซีแลนด์ แคนาดา)
-//     [รอบการประชุม] => 2/2561 (39)
-//     [ยอดเงินอนุมัติจากคณะกรรม] => 200000.0000
-//     [ยอดเงินอนุมัติจากคลัง] => 101797.7800
-//     [สถานะใบสมัคร] => ผ่านการพิจารณาจากคณะกรรมการ
-//     [สถานะเบิกจ่าย] => รับเงินเรียบร้อย
-//     [CancelStatus] =>
-//     [Cancel_Remark] =>
-//     [ยอดส่งออหลังร่วมกิจกรรม] => 210000.0000
-//     [หมายเหตุกรณีไม่มียอดส่งออก] =>
-//     [กลุ่มสินค้า] => สินค้าไลฟ์สไตล์
-//     [ประเภทสินค้าหลัก] => Gifts and Decorative Items / Handicrafts
-//     [สินค้า] => Gifts and Decorative Items / Handicrafts:Christmas , Seasonal Decoration & Gift , Florists , Requisites & Garden 
-// Decoration , Candles & Fragrances
-//     [วันที่ส่งใบสมัคร] => 12/09/2018
-//     [วันที่สภาอนุมัติใบสมัคร] => 27/11/2018
-//     [วันที่กรมอนุมัติใบสมัคร] => 15/11/2018
-//     [วันที่คณะกรรมการอนุมัติใบสมัคร] => 03/12/2018
-//     [วันที่ส่งเอกสารเบิกจ่าย] => 27/02/2019
-//     [วันที่สภาอนุมัติเอกสารเบิกจ่าย] => 15/03/2019
-//     [วันที่คลังรับเอกสาร] => 19/03/2019
-//     [วันที่คลังอนุมัติ] => 19/03/2019
-//     [วันที่รับเช็ค] => 27/03/2019
-//     [สิทธิที่ใช้ไปแล้วแสดสินค้า] => 3
-//     [สิทธิที่ใช้ไปแล้วงานBOP] => 0
-//     [สิทธิที่ใช้ไปแล้วงานVirtual] => 0
-//     [นับสิทธิยกเลิก] =>
-//     [จำนวนสิทธิที่ตัดในรอบถัดไป] =>
-//     [วันที่] => 25
-//     [เดือน] => 1
-//     [ปี] => 2019
-//     [มูลค่าสั่งซื้อทันที่USD] => 47000.0000
-//     [มูลค่าสั่งซื้อคาดการณ์ใน1ปีUSD] => 100000.0000
-//     [มูลค่าสั่งซื้อรวม] => 147000.0000
-//     [ขนาดธุรกิจ] => S
-//     [TSIC] => ผลิต ส่งออก ตุ๊กตา วัสดุตกแต่งที่ใช้ในงานเทศกาลต่าง ๆ ที่ทำจากผ้า
-//     [TSICCode] => 32402
-//     [BusinessSector] => ภาคการผลิต
+      
         $DITP_ONE = "INSERT INTO `sme_reportformapprove_bi`(`Activity_Form_Id`, `Company`, `Corporate_number`, `Address`, `SubDistrict`, `District`, `Province`, `BangkokandCenter`, 
         `Sector`, `Member_type`, `ReferanceSME`, `QOLQE_Activity`, `Activity_name`, `Start_Date`, `Organizations`, `Organized_time`, `Year`, `Country`, `City`, `Continent`, `Activity_type`, 
         `Budget`, `Limit_type`, `Send_the_council`, `QOLQE_Department`, `Activity_name_Department`, `Date_Department`, `Start_Date_Department`, `End_Date_Department`, `Organization_Department`, 
@@ -188,7 +38,10 @@ if (sqlsrv_num_rows($query_cr2) >0){
         print_r($DITP_ONE);
         if ($mysqli->query($DITP_ONE) === FALSE ) {
             echo "Failed to connect to MySQL: " . $mysqli->error;
-        // print_r($data_loop);
+            die();
+        } 
+        if ($mysqlis->query($DITP_ONE) === FALSE ) {
+            echo "Failed to connect to MySQL: " . $mysqlis->error;
             die();
         } 
     }

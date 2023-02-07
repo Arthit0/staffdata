@@ -2,10 +2,15 @@
 include("connection_NEA.php");
 include("helper.php");
 ini_set("max_execution_time",0);
-$TRUNCATE = "TRUNCATE DITPONE_DimNEA_OverviewDashboardExport";
+
+$TRUNCATE = "TRUNCATE oneuat.DITPONE_DimNEA_OverviewDashboardExport";
+$TRUNCATES = "TRUNCATE oneuat_dev.DITPONE_DimNEA_OverviewDashboardExport";
     if ($mysqli->query($TRUNCATE) === FALSE ) {
-    echo "Failed to connect to MySQL: " . $mysqli->error;
+            echo "Failed to connect to MySQL: " . $mysqli->error;
     } 
+    if ($mysqlis->query($TRUNCATES) === FALSE ) {
+        echo "Failed to connect to MySQL: " . $mysqlis->error;
+    }
 $SqlServer = "select * from DITPONE_DimNEA_OverviewDashboardExport";
 $query_cr2 = sqlsrv_query($conn_ditp, $SqlServer, array(), array("Scrollable" => 'static'));  
 if (sqlsrv_num_rows($query_cr2) >0){
@@ -16,7 +21,11 @@ if (sqlsrv_num_rows($query_cr2) >0){
        if ($mysqli->query($DITP_ONE) === FALSE ) {
            echo "Failed to connect to MySQL: " . $mysqli->error;
            die();
-       } 
+       }
+       if ($mysqlis->query($DITP_ONE) === FALSE ) {
+            echo "Failed to connect to MySQL: " . $mysqlis->error;
+            die();
+      } 
     }
 }
 echo "<br>";
